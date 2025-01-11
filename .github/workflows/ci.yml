@@ -31,6 +31,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+        
+      - name: Run MongoDB container
+        run: |
+            docker run --name mongo -d mongo --sslDisabledProtocols 'none'
+        
 
       - name: Install dependencies
         run: npm install
