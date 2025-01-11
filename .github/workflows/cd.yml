@@ -3,10 +3,7 @@ name: Buil and Deploy
 on:
   push:
     branches:
-      - 5.4-dars
-  pull_request:
-    branches:
-      - 5.4-dars
+      - main
 
 jobs:
   build-and-test:
