@@ -17,4 +17,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: 22
-        script: whoami
+        script:
+          cd ci-cd-test
+          git pull
+          pnpm i 
+          pnpm run start
