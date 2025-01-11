@@ -1,0 +1,23 @@
+name: Buil and Deploy
+
+on:
+  push:
+    branches:
+      - 5.4-dars
+  pull_request:
+    branches:
+      - 5.4-dars
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: connect to server and deploy
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: whoami
