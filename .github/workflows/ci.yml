@@ -32,15 +32,16 @@ jobs:
         with:
           node-version: 18
         
-      - name: Run MongoDB container
-        run: |
-            docker run --name mongo -d mongo --sslDisabledProtocols 'none'
-        
+      - name: Docker build
+        run: docker-compose build
 
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
         env:
-          MONGO_URI: mongodb://localhost:27017/test_db
+          MONGO_URI: mongodb://localhost:27017/register_app
         run: npm run test
+
+      - name: Docker up
+        run: docker up -d
